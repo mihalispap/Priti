@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration</title>
+    </head>
+    <body>
+
+        <div role="register">
+
+            <div data-role="header" class="header">
+                <h1 id="app-title">Priti</h1>
+                <a href="/" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext" rel="external">Home</a>
+            </div>
+
+            <form>
+
+                <label for="username">Username:</label>
+                <input id="username" name="username" placeholder="username" required />
+
+                <label for="password">Password:</label>
+                <input id="password" name="password" placeholder="password" type="password" required />
+
+                <label for="email-input">Email:</label>
+                <input id="email-input" name="email" type="email" placeholder="email" required />
+
+                <label for="name-input">Name:</label>
+                <input id="name-input" name="name" placeholder="name" required />
+
+                <label for="surname-input">Surname:</label>
+                <input id="surname-input" name="surname" placeholder="surname" required />
+
+                <label for="role-input">Role:</label>
+                <select id="role-input" name="role" placeholder="role" required >
+                    <option value="user">User</option>
+                    <option value="professional">Professional</option>
+                </select>
+
+                <button id="register" data-role="button" data-icon="cloud">Register</button>
+            </form>
+
+            <div id="error-msg" class="not-displayed"></div>
+
+        </div>
+        <script src="scripts/register.js"></script>
+        <script src="scripts/user.js"></script>
+        <script src="scripts/config.js"></script>
+    </body>
+</html>

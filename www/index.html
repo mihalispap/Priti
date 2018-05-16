@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to
+         enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+
+        <meta http-equiv="Content-Security-Policy" content="default-src
+        'self' data: gap: https://ssl.gstatic.com http://localhost http://api.priti.gr
+         'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://maps.googleapis.com https://fonts.gstatic.com https://maps.gstatic.com https://ssl.gstatic.com ws://echo.websocket.org http://api.priti.gr  http://www.priti.gr 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; media-src *; img-src * filesystem: data:">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; media-src *; img-src * filesystem: data:">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlk6FU7tnedk0DxBIcBG84X4NKH-Y6AXo"></script>
+
+    <title>priti</title>
+
+</head>
+<body>
+
+<div data-role="page" id="index">
+    <div data-role="header" class="header">
+        <!--<h1>Priti</h1>-->
+        <!--<a href="#index" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>-->
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <div role="home">
+
+            <div class="central-icon">
+                <img src="images/logo_priti.png"/>
+            </div>
+            <h3 class="welcome-message">Welcome to a priti world!</h3>
+            <div class="steps">
+                <div class="heading">How it works:</div>
+                <ol>
+                    <li>Pick a service at the time and location of your choice</li>
+                    <li>Select the professional of your preference</li>
+                    <li>Feel priti head to toe!</li>
+                </ol>
+            </div>
+
+            <div class="central-buttons">
+                <div class="login">
+                    <button onclick="open_login()">Login</button>
+                </div>
+                <div class="register">
+                    <button onclick="open_register()">Sign Up</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy; <a href="http://www.priti.gr/terms_priti.htm">Terms &amp; Conditions</a></h4>
+    </footer>
+</div>
+
+<div data-role="page" id="login">
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <div>
+            <div class="central-icon">
+                <img src="images/logo_priti.png"/>
+            </div>
+            <form>
+                <label for="username-input">Username</label>
+                <input id="username-input" name="username" placeholder="username" required />
+                <label for="password-input">Password</label>
+                <input type="password" id="password-input" name="password" placeholder="password" required />
+                <button id="validate-login" data-role="button" data-icon="action">Login</button>
+            </form>
+
+        </div>
+
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+</div>
+
+<div data-role="page" id="menu_user">
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <div class="central-icon">
+            <img src="images/logo_priti.png"/>
+        </div>
+        <div role="post-request">
+            <button data-role="button" data-icon="plus" onclick="open_new_request()">Pick a Service</button>
+        </div>
+
+        <div role="view-request">
+            <button data-role="button" data-icon="calendar" onclick="open_my_requests()">My Appointments</button>
+        </div>
+
+        <div role="post-message">
+            <button data-role="button" data-icon="comment" onclick="open_post_message()">priti Messenger</button>
+        </div>
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy; <a href="http://www.priti.gr/terms_priti.htm">Terms &amp; Conditions</a></h4>
+    </footer>
+</div>
+
+<div data-role="page" id="post_user">
+
+
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <h4 style="text-align:center;font-weight:normal;">Pick a service:</h4>
+        <!--<select style="display:none;" id="service-high-input" name="service-high" placeholder="service" required="" onchange="$('#service-group1').hide();$('#service-group2').hide();$('#service-group3').hide();$('#service-group4').hide();if (this.selectedIndex!=0) $('#service-group'+this.selectedIndex).show();">
+            <option value="--- select service ---">--- select service ---</option>
+            <option value="Nail that holiday look (Nails)">Nail that holiday look (Nails)</option>
+            <option value="Salt in the air, a priti pro for my hair (Hair)">Salt in the air, a priti pro for my hair (Hair)</option>
+            <option value="Ohh that pretty face (MakeUp)" onselect="alert('makeup')">Ohh that pretty face (MakeUp)</option>
+            <option value="Body & Soul" onselect="alert('body')">Body & Soul</option>
+        </select>-->
+
+        <button onclick="$('#service-group1').hide();$('#service-group2').hide();$('#service-group3').hide();$('#service-group4').hide();$('#service-group1').show();">Nails<br/><i>Nail that holiday look</i></button>
+
+        <div id="service-group1" class="not-displayed">
+            <input type="radio" name="servicer" value="Manicure"/><div class="check-label">Manicure</div>
+            <input type="radio" name="servicer" value="Pedicure"/><div class="check-label">Pedicure</div>
+            <input type="radio" name="servicer" value="Gel Manicure"/><div class="check-label">Gel Manicure</div>
+            <input type="radio" name="servicer" value="Gel Pedicure"/><div class="check-label">Gel Pedicure</div>
+            <input type="radio" name="servicer" value="TouchUp (shape/colour)"/><div class="check-label">TouchUp (shape/colour)</div>
+        </div>
+
+        <button onclick="$('#service-group1').hide();$('#service-group2').hide();$('#service-group3').hide();$('#service-group4').hide();$('#service-group2').show();">Hair<br/><i>Salt in the air, a priti pro for my hair</i></button>
+
+        <div id="service-group2" class="not-displayed">
+            <input type="radio" name="servicer" value="Updo"/><div class="check-label">Updo</div>
+            <input type="radio" name="servicer" value="Braids"/><div class="check-label">Braids</div>
+            <input type="radio" name="servicer" value="Blow Dry and Styling"/><div class="check-label">Blow Dry and Styling</div>
+            <input type="radio" name="servicer" value="Curls and Styling"/><div class="check-label">Curls and Styling</div>
+            <input type="radio" name="servicer" value="Men Grooming"/><div class="check-label">Men Grooming</div>
+            <input type="radio" name="servicer" value="Special Occasion"/><div class="check-label">Special Occasion</div>
+        </div>
+
+        <button onclick="$('#service-group1').hide();$('#service-group2').hide();$('#service-group3').hide();$('#service-group4').hide();$('#service-group3').show();">MakeUp<br/><i>Ohh that pretty face</i></button>
+
+        <div id="service-group3" class="not-displayed">
+            <input type="radio" name="servicer" value="Beach Makeup"/><div class="check-label">Beach Makeup</div>
+            <input type="radio" name="servicer" value="Mykonian Night-out Makeup"/><div class="check-label">Mykonian Night-out Makeup</div>
+            <input type="radio" name="servicer" value="Wedding Makeup"/><div class="check-label">Wedding Makeup</div>
+        </div>
+
+        <button onclick="$('#service-group1').hide();$('#service-group2').hide();$('#service-group3').hide();$('#service-group4').hide();$('#service-group4').show();">Body & Soul</button>
+
+        <div id="service-group4" class="not-displayed">
+            <input type="radio" name="servicer" value="Yoga"/><div class="check-label">Yoga</div>
+            <input type="radio" name="servicer" value="Pilates"/><div class="check-label">Pilates</div>
+            <input type="radio" name="servicer" value="Customized workout"/><div class="check-label">Customized workout</div>
+            <input type="radio" name="servicer" value="Outdoor Training"/><div class="check-label">Outdoor Training</div>
+        </div>
+
+
+
+        <label for="participants-input">Quantity:</label>
+        <input id="participants-input" name="participants" placeholder="participants" required  type="number" min="1" max="10"/>
+
+        <h4>Please specify your location on the map:</h4>
+        <h6>You can double tap anywhere on the map to place a marker and then drag to your location</h6>
+        <div style="width:100%;height:250px;" id="map_canvas"></div>
+        <button id="getPosition" data-role="button" data-icon="location">Current position</button>
+        <!--<label for="service-input">Service:</label>
+        <select id="service-input" name="service" placeholder="service" required="">
+            <optgroup label="Nail that holiday look (Nails)">
+                <option value="Manicure">Manicure</option>
+                <option value="Pedicure">Pedicure</option>
+                <option value="Gel Manicure">Gel Manicure</option>
+                <option value="Gel Pedicure">Gel Pedicure</option>
+                <option value="TouchUp (shape/colour)">TouchUp (shape/colour)</option>
+            </optgroup>
+            <optgroup label="Salt in the air, a priti pro for my hair (Hair)">
+                <option value="Updo">Updo</option>
+                <option value="Braids">Braids</option>
+                <option value="Blow Dry and Styling">Blow Dry and Styling</option>
+                <option value="Curls and Styling">Curls and Styling</option>
+                <option value="Men's Grooming">Men's Grooming</option>
+                <option value="Special Occasion">Special Occasion</option>
+            </optgroup>
+
+            <optgroup label="Ohh that pretty face (MakeUp)">
+                <option value="Beach Makeup">Beach Makeup</option>
+                <option value="Mykonian Night-out Makeup">Mykonian Night-out Makeup</option>
+                <option value="Wedding Makeup">Wedding Makeup</option>
+            </optgroup>
+
+            <optgroup label="Body & Soul">
+                <option value="Yoga">Yoga</option>
+                <option value="Pilates">Pilates</option>
+                <option value="Customized workout">Customized workout</option>
+                <option value="Outdoor Training">Outdoor Training</option>
+            </optgroup>
+        </select>-->
+
+
+        <input type="hidden" id="latitude"/>
+        <input type="hidden" id="longitude"/>
+
+
+        <label for="address-input">Please indicate your exact location:</label>
+        <input id="address-input" name="address" placeholder="address or location" />
+
+        <label for="loctype-input">Kindly select as appropriate:</label>
+        <div id="loctype-input" name="location" placeholder="location-type" required>
+        </div>
+
+        <label for="app-date-input">Appointment Date:</label>
+        <input  id="app-date-input" name="app-date" type="date" required />
+
+        <label for="app-time-input">Appointment Time:</label>
+        <input  id="app-time-input" name="app-time" type="time" required />
+
+        <label for="notes-input">Special requests from special people:</label>
+        <textarea id="notes-input" name="notes" rows="5" placeholder="(e.g. allergies, special requests, etc)"></textarea>
+
+        <h5 style="font-style:italic;">High season already! Please note priti pros may not be available within the next 2 hours.</h5>
+
+        <button id="post_new_request" data-role="button" data-icon="check">Next</button>
+
+
+
+    </div>
+
+    <footer data-role="footer"  class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+</div>
+
+<div data-role="page" id="view_user">
+
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <h3 class="appointments-title">My Appointments</h3>
+        <div id="my-appointments"></div>
+
+        <h5 style="font-style: italic;clear:both;">Manage your appointments through the 'My Appointments' tab</h5>
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+
+</div>
+
+<div data-role="page" id="search-pro">
+
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <h4>Searching for your professional...<br/>
+            This may take up to 5 minutes.
+        </h4>
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+
+</div>
+
+<div data-role="page" id="sorry">
+
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <h4>This is taking longer than usual, please try again later.
+        </h4>
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+
+</div>
+
+<div data-role="page" id="post_message">
+
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+        <a onclick="open_post_message()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-refresh ui-btn-icon-notext">Refresh</a>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <h3 class="appointments-title" id="messages-title">Messages</h3>
+        <div id="my-messages"></div>
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+
+</div>
+
+<div data-role="page" id="menu_prof">
+
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <div class="central-icon">
+            <img src="images/logo_priti.png"/>
+        </div>
+        <div role="post-request">
+            <button data-role="button" data-icon="user" onclick="open_my_profile()">My Profile</button>
+        </div>
+
+        <div role="view-request">
+            <button data-role="button" data-icon="eye" onclick="open_open_requests()">Open Requests</button>
+        </div>
+
+        <div role="view-appointments">
+            <button data-role="button" onclick="open_view_reservations()" data-icon="calendar">My Appointments</button>
+        </div>
+
+        <div role="post-message">
+            <button data-role="button" data-icon="comment" onclick="open_post_message()">priti Messenger</button>
+        </div>
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy; <a href="http://www.priti.gr/terms_priti.htm">Terms &amp; Conditions</a></h4>
+    </footer>
+
+</div>
+
+<div data-role="page" id="post_prof">
+
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <h3 style="text-align:center;">My Profile</h3>
+
+        <!--<form>-->
+
+        <label for="proname">Name:</label>
+        <input type="text" id="proname"/>
+        <label for="prosurname">Surname:</label>
+        <input type="text" id="prosurname"/>
+
+        <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+        <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">Select Profile Photo:</button><br>
+        <label for="services">Service(s):</label>
+        <!--<div id="services"></div>-->
+        <div id="services">
+            <div class="service-group">
+                <h4>Nail that holiday look (Nails)</h4>
+                <input id="service-18" type="checkbox" value="Manicure" name="service"/><div class="check-label">Manicure</div>
+                <input id="service-19" type="checkbox" value="Pedicure" name="service"/><div class="check-label">Pedicure</div>
+                <input id="service-20" type="checkbox" value="Gel Manicure" name="service"/><div class="check-label">Gel Manicure</div>
+                <input id="service-21" type="checkbox" value="Gel Pedicure" name="service"/><div class="check-label">Gel Pedicure</div>
+                <input id="service-23" type="checkbox" value="TouchUp (shape/colour)" name="service"/><div class="check-label">TouchUp (shape/colour)</div>
+            </div>
+
+            <div class="service-group">
+                <h4>Salt in the air, a pritipro for my hair (Hair)</h4>
+                <input id="service-24" type="checkbox" value="Updo" name="service"/><div class="check-label">Updo</div>
+                <input id="service-25" type="checkbox" value="Braids" name="service"/><div class="check-label">Braids</div>
+                <input id="service-26" type="checkbox" value="Blow Dry and Styling" name="service"/><div class="check-label">Blow Dry and Styling</div>
+                <input id="service-27" type="checkbox" value="Curls and Styling" name="service"/><div class="check-label">Curls and Styling</div>
+                <input id="service-28" type="checkbox" value="Men" s="" grooming'="" name="service"/><div class="check-label">Men's Grooming</div>
+                <input id="service-29" type="checkbox" value="Special Occasion" name="service"/><div class="check-label">Special Occasion</div>
+            </div>
+
+            <div class="service-group">
+                <h4>Ohh that pretty face (MakeUp)</h4>
+                <input id="service-30" type="checkbox" value="Beach Makeup" name="service"/><div class="check-label">Beach Makeup</div>
+                <input id="service-31" type="checkbox" value="Mykonian Night-out Makeup" name="service"/><div class="check-label">Mykonian Night-out Makeup</div>
+                <input id="service-32" type="checkbox" value="Wedding Makeup" name="service"/><div class="check-label">Wedding Makeup</div>
+            </div>
+
+            <div class="service-group">
+                <h4>Body & Soul</h4>
+                <input id="service-33" type="checkbox" value="Yoga" name="service"/><div class="check-label">Yoga</div>
+                <input id="service-34" type="checkbox" value="Pilates" name="service"/><div class="check-label">Pilates</div>
+                <input id="service-35" type="checkbox" value="Customized workout" name="service"/><div class="check-label">Customized workout</div>
+                <input id="service-36" type="checkbox" value="Outdoor Training" name="service"/><div class="check-label">Outdoor Training</div>
+            </div>
+        </div>
+
+        <label for="short-bio">Short Bio:</label>
+        <textarea id="short-bio"></textarea>
+        <label for="social">Social Link:</label>
+        <input type="text" id="social"/>
+
+
+        <img style="display:none;" id="smallImage1" src="" />
+        <button onclick="getPhoto1(pictureSource.PHOTOLIBRARY);">Sample of Work:</button><br>
+        <img style="display:none;" id="smallImage2" src="" />
+        <button onclick="getPhoto2(pictureSource.PHOTOLIBRARY);">Sample of Work:</button><br>
+        <img style="display:none;" id="smallImage3" src="" />
+        <button onclick="getPhoto3(pictureSource.PHOTOLIBRARY);">Sample of Work:</button><br>
+        <img style="display:none;" id="smallImage4" src="" />
+        <button onclick="getPhoto4(pictureSource.PHOTOLIBRARY);">Sample of Work:</button><br>
+        <img style="display:none;" id="smallImage5" src="" />
+        <button onclick="getPhoto5(pictureSource.PHOTOLIBRARY);">Sample of Work:</button><br>
+        <button id="post_prof_updates" data-role="button" data-icon="check">Update</button>
+        <!--</form>-->
+
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+
+</div>
+
+<div data-role="page" id="prof_profile">
+
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <h3>Professional's Profile</h3>
+
+        <!--<form>-->
+
+        <label for="pproname">Name:</label>
+        <input type="text" id="pproname" disabled/>
+        <label for="pprosurname">Surname:</label>
+        <input type="text" id="pprosurname" disabled/>
+
+        <img style="display:none;width:60px;height:60px;" id="psmallImage" src="" />
+
+        <label for="pshort-bio">Short Bio:</label>
+        <textarea id="pshort-bio" disabled></textarea>
+        <label for="psocial" style="display:none;">Social Link:</label>
+        <input type="text" style="display:none;" id="psocial" disabled/>
+
+        <h4>Upload your portfolio:</h4>
+        <img style="display:none;" id="psmallImage1" src="" />
+        <img style="display:none;" id="psmallImage2" src="" />
+        <img style="display:none;" id="psmallImage3" src="" />
+        <img style="display:none;" id="psmallImage4" src="" />
+        <img style="display:none;" id="psmallImage5" src="" />
+        <!--</form>-->
+
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+
+</div>
+
+<div data-role="page" id="view_prof">
+
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <h3 class="appointments-title">Available Requests</h3>
+
+
+        <div id="requests"></div>
+        <div style="width:100%;height:120px;" id="requests-map"></div>
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+
+</div>
+
+<div data-role="page" id="view_reservations">
+
+    <div data-role="header" class="header">
+        <h1></h1>
+        <a onclick="go_home()" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext">Home</a>
+        <button data-role="button" data-icon="power" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <h3 class="appointments-title">My Appointments</h3>
+
+        <div id="my-reservations"></div>
+        <div style="width:100%;height:120px;" id="reservations-map"></div>
+
+    </div>
+
+    <footer data-role="footer" class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+
+</div>
+
+<div data-role="page" id="register_form">
+
+    <div data-role="header" class="header">
+        <h1 id="app-title">Sign Up</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <form>
+
+            <label for="role-input">I am a:</label>
+            <select id="role-input" name="role" placeholder="role" required >
+                <option value="user">Customer</option>
+                <option value="professional">Professional</option>
+            </select>
+
+            <label for="username">Username:</label>
+            <input id="username" name="username" placeholder="username" required />
+
+            <label for="password">Password:</label>
+            <input id="password" name="password" placeholder="password" type="password" required />
+
+            <label for="email-input">Email:</label>
+            <input id="email-input" name="email" type="email" placeholder="email" required />
+
+            <label for="name-input">Name:</label>
+            <input id="name-input" name="name" placeholder="name" required />
+
+            <label for="surname-input">Surname:</label>
+            <input id="surname-input" name="surname" placeholder="surname" required />
+
+
+            <button id="register" data-role="button" data-icon="cloud">Sign Up</button>
+        </form>
+
+
+    </div>
+
+    <footer data-role="footer" data-position="fixed" class="footer">
+        <h4>priti &copy;</h4>
+    </footer>
+
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="scripts/platformOverrides.js"></script>
+<script type="text/javascript" src="scripts/index.js"></script>
+<script src="scripts/jquery-2.2.3.min.js"></script>
+<script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+<script src="scripts/login.js"></script>
+<script src="scripts/model/user.js"></script>
+<script src="scripts/model/config.js"></script>
+
+
+<script src="scripts/menu_user.js"></script>
+
+<script src="scripts/register.js"></script>
+
+<script src="scripts/post_user.js"></script>
+<script src="scripts/gmap.js"></script>
+
+<script src="scripts/view_user.js"></script>
+
+<script src="scripts/post_prof.js"></script>
+
+<script src="scripts/view_prof.js"></script>
+<script src="scripts/post_message.js"></script>
+<script src="scripts/view_reservations.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Appointment Request</title>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+        <!--
+            JS: AIzaSyAYuVVpPJPxpJowyGj0ZScgtbYvYiAWuFc
+            Android: AIzaSyAcifMMQvLsQdhfI0f44i0k9WWqoNUbzss
+            iOS: AIzaSyAlk6FU7tnedk0DxBIcBG84X4NKH-Y6AXo
+         -->
+        <script>
+
+        </script>
+
+    </head>
+    <body>
+
+        <div role="register">
+
+            <div data-role="header" class="header">
+                <h1 id="app-title">Priti</h1>
+                <a href="/" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext" rel="external">Home</a>
+            </div>
+
+            <h3>New Appointment Request</h3>
+
+            <form>
+
+                <label for="service-input">Service:</label>
+                <select id="service-input" name="service" placeholder="service" required>
+
+                    <!--
+                        TODO:
+                            generate from api
+                     -->
+                </select>
+
+                <div style="width:100%;height:250px" id="map_canvas"></div>
+
+                <div id="getPosition">CURRENT POSITION</div>
+
+                <label for="participants-input">Number of Participants:</label>
+                <input id="participants-input" name="participants" placeholder="participants" required />
+
+                <label for="app-date-input">Appointment Date:</label>
+                <input  id="app-date-input" name="app-date" type="date" required />
+
+                <label for="app-time-input">Appointment Time:</label>
+                <input  id="app-time-input" name="app-time" type="time" required />
+
+                <label for="notes-input">Notes:</label>
+                <textarea id="notes-input" name="notes" rows="5"/>
+
+                <input type="hidden" id="latitude">
+                <input type="hidden" id="longitude">
+
+                <button id="post" data-role="button" data-icon="plus">Post</button>
+            </form>
+
+            <div id="error-msg" class="not-displayed"></div>
+
+        </div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+
+        <script src="scripts/jquery-2.2.3.min.js"></script>
+        <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+        <script src="scripts/login.js"></script>
+        <script src="scripts/model/user.js"></script>
+        <script src="scripts/model/config.js"></script>
+        <script src="scripts/post_user.js"></script>
+        <script src="scripts/gmap.js"></script>
+
+        <!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAYuVVpPJPxpJowyGj0ZScgtbYvYiAWuFc"></script>-->
+
+    </body>
+</html>

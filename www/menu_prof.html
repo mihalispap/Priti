@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+
+<div data-role="header" class="header">
+    <h1 id="app-title">Priti</h1>
+    <a href="/" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext" rel="external">Home</a>
+</div>
+
+<div id="welcome-msg" class="not-displayed"></div>
+
+<div role="menu">
+
+    <div role="post-request">
+        <a href="post_prof.html" data-role="button" data-icon="user">My Profile</a>
+    </div>
+
+    <div role="view-request">
+        <a href="view_prof.html" data-role="button" data-icon="info">Open Requests</a>
+    </div>
+
+    <div role="view-appointments">
+        <a href="view_reservations.html" data-role="button" data-icon="check">My Reservations</a>
+    </div>
+
+</div>
+
+<script src="scripts/menu_user.js"></script>
+<script src="scripts/model/user.js"></script>
+
+</body>
+</html>
